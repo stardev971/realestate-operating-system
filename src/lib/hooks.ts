@@ -20,8 +20,8 @@ function useScoped<T>(key: string, queryFn: () => Promise<T>, initialData: T) {
   const { range } = useDateRange();
   const query = useQuery({ queryKey: [key], queryFn, initialData });
   const data = useMemo(
-    () => applyRange(query.data, range),
-    [query.data, range]
+    () => applyRange(query.data ?? initialData, range),
+    [query.data, range, initialData]
   );
   return { ...query, data };
 }
