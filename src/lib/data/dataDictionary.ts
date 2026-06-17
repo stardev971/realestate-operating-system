@@ -1,0 +1,67 @@
+import type { MetricDef } from "@/lib/types";
+
+export const dataDictionary: MetricDef[] = [
+  { metric: "Portfolio Value", formula: "Σ estimated market value of all managed assets", sources: ["Yardi", "CoStar", "MRI Software"], meaning: "Total estimated market value across all managed assets. The headline measure of portfolio scale.", category: "Portfolio" },
+  { metric: "Annual Revenue", formula: "Rental revenue + property sales revenue (trailing 12mo)", sources: ["Yardi", "QuickBooks", "Salesforce"], meaning: "Top-line demand across rentals and sales — the starting point for every downstream profitability calculation.", category: "Revenue" },
+  { metric: "NOI", formula: "Gross Operating Income − Operating Expenses", sources: ["Yardi", "QuickBooks"], meaning: "Net Operating Income — core profitability of properties before debt service and capital costs.", category: "Revenue" },
+  { metric: "Operating Expenses", formula: "Σ property operating costs (taxes, insurance, R&M, mgmt, utilities)", sources: ["Yardi", "QuickBooks", "AppFolio"], meaning: "All costs required to operate the properties, excluding debt service and capex.", category: "Revenue" },
+  { metric: "Debt Service", formula: "Principal + interest payments on portfolio debt", sources: ["QuickBooks", "NetSuite"], meaning: "Total scheduled debt obligations. Compared to NOI to derive DSCR.", category: "Revenue" },
+  { metric: "EBITDA", formula: "NOI − corporate G&A + non-property income", sources: ["QuickBooks", "NetSuite"], meaning: "Earnings before interest, taxes, depreciation, and amortization at the enterprise level.", category: "Revenue" },
+  { metric: "Cash Flow", formula: "NOI − Debt Service − Capex", sources: ["QuickBooks", "Yardi"], meaning: "Levered free cash flow available to the business after debt and capital expenditures.", category: "Revenue" },
+  { metric: "Revenue per Property", formula: "Annual Revenue ÷ number of properties", sources: ["Yardi", "QuickBooks"], meaning: "Average annual revenue contribution per asset — a normalization metric for benchmarking.", category: "Revenue" },
+  { metric: "Revenue per Sq Ft", formula: "Annual Revenue ÷ total leasable square footage", sources: ["Yardi", "CoStar"], meaning: "Revenue efficiency per unit of space, used to compare assets of different sizes.", category: "Revenue" },
+  { metric: "Occupancy Rate", formula: "Occupied units ÷ total units × 100", sources: ["Yardi", "AppFolio", "Entrata"], meaning: "Share of the portfolio that is currently leased. A primary leading indicator of revenue.", category: "Leasing" },
+  { metric: "Leasing Velocity", formula: "Net new leases signed per month", sources: ["AppFolio", "Salesforce"], meaning: "Pace at which vacant units are absorbed — measures leasing momentum.", category: "Leasing" },
+  { metric: "Active Leases", formula: "Count of leases currently in effect", sources: ["Yardi", "AppFolio"], meaning: "Total in-force leases across the portfolio.", category: "Leasing" },
+  { metric: "Lease Renewals", formula: "Count of leases renewed in period", sources: ["AppFolio", "Entrata"], meaning: "Renewed leases — retention is materially cheaper than new acquisition.", category: "Leasing" },
+  { metric: "Expiring Leases", formula: "Leases reaching end of term in next 90 days", sources: ["Yardi", "AppFolio"], meaning: "Near-term lease rolls requiring renewal or re-leasing attention.", category: "Leasing" },
+  { metric: "Vacancy Forecast", formula: "Projected vacant units ÷ total units (45-day model)", sources: ["AI Model", "AppFolio"], meaning: "AI-projected vacancy over the next 45 days based on notices and expirations.", category: "Leasing" },
+  { metric: "Renewal Rate", formula: "Renewed leases ÷ expiring leases × 100", sources: ["AppFolio", "Entrata"], meaning: "Share of expiring leases that renew — a key retention measure.", category: "Leasing" },
+  { metric: "Rent Collection Rate", formula: "Rent collected on-time ÷ rent billed × 100", sources: ["AppFolio", "QuickBooks"], meaning: "Efficiency of rent collection and a leading indicator of delinquency.", category: "Leasing" },
+  { metric: "New Leads", formula: "Count of new inbound leads in period", sources: ["Salesforce", "HubSpot", "Zillow"], meaning: "Top of the sales funnel — total new prospective buyers and tenants.", category: "Sales" },
+  { metric: "Qualified Leads", formula: "Leads meeting qualification criteria", sources: ["Salesforce", "HubSpot"], meaning: "Leads scored as sales-ready, indicating lead quality.", category: "Sales" },
+  { metric: "Tours Scheduled", formula: "Count of property tours booked", sources: ["Salesforce", "Follow Up Boss"], meaning: "Mid-funnel intent signal — scheduled property visits.", category: "Sales" },
+  { metric: "Deals Closed", formula: "Count of closed-won transactions", sources: ["Salesforce", "DocuSign"], meaning: "Completed sales or signed leases in the period.", category: "Sales" },
+  { metric: "Sales Conversion Rate", formula: "Deals closed ÷ new leads × 100", sources: ["Salesforce"], meaning: "End-to-end funnel efficiency from lead to close.", category: "Sales" },
+  { metric: "Avg Deal Value", formula: "Total closed value ÷ deals closed", sources: ["Salesforce", "DocuSign"], meaning: "Average transaction size across closed deals.", category: "Sales" },
+  { metric: "Pipeline Value", formula: "Σ (open deal value × stage probability)", sources: ["Salesforce", "HubSpot"], meaning: "Probability-weighted value of all open opportunities.", category: "Sales" },
+  { metric: "Leads Generated", formula: "Count of marketing-sourced leads", sources: ["Google Ads", "Meta Ads", "Zillow"], meaning: "Leads attributable to marketing campaigns.", category: "Marketing" },
+  { metric: "Cost Per Lead", formula: "Marketing spend ÷ leads generated", sources: ["Google Ads", "Meta Ads"], meaning: "Blended acquisition cost for a single lead.", category: "Marketing" },
+  { metric: "Cost Per Acquisition", formula: "Marketing spend ÷ deals closed", sources: ["Google Ads", "Salesforce"], meaning: "Fully-loaded cost to acquire one closed customer.", category: "Marketing" },
+  { metric: "Campaign ROI", formula: "Attributed revenue ÷ campaign spend", sources: ["Google Ads", "Salesforce"], meaning: "Return on marketing investment across campaigns.", category: "Marketing" },
+  { metric: "Website Traffic", formula: "Total monthly site visits", sources: ["Google Analytics"], meaning: "Top-of-funnel digital demand.", category: "Marketing" },
+  { metric: "Tour Bookings", formula: "Tours booked via marketing channels", sources: ["Zillow", "Salesforce"], meaning: "Marketing-driven property tour bookings.", category: "Marketing" },
+  { metric: "AUM", formula: "Σ assets under management across funds", sources: ["MRI Software", "NetSuite"], meaning: "Total value of assets managed across all investment vehicles.", category: "Investment" },
+  { metric: "Portfolio IRR", formula: "Internal rate of return on invested capital (net)", sources: ["NetSuite", "MRI Software"], meaning: "Time-weighted return on equity across the portfolio, net of fees.", category: "Investment" },
+  { metric: "Equity Invested", formula: "Σ equity capital deployed", sources: ["NetSuite"], meaning: "Total equity capital deployed into assets.", category: "Investment" },
+  { metric: "Debt Exposure", formula: "Σ outstanding debt principal", sources: ["NetSuite", "QuickBooks"], meaning: "Total leverage across the portfolio; basis for LTV.", category: "Investment" },
+  { metric: "Projected Returns", formula: "Forecast distributions + terminal value (5-yr model)", sources: ["AI Model", "NetSuite"], meaning: "AI-forecast returns over the investment horizon.", category: "Investment" },
+  { metric: "Distribution Yield", formula: "Annual distributions ÷ invested equity", sources: ["NetSuite"], meaning: "Cash yield returned to investors annually.", category: "Investment" },
+  { metric: "Open Work Orders", formula: "Count of unresolved maintenance tickets", sources: ["AppFolio", "Yardi"], meaning: "Outstanding maintenance demand across the portfolio.", category: "Operations" },
+  { metric: "Avg Resolution Time", formula: "Mean hours from ticket open to close", sources: ["AppFolio"], meaning: "Operational responsiveness of maintenance teams.", category: "Operations" },
+  { metric: "Vendor Spend", formula: "Σ payments to maintenance vendors", sources: ["QuickBooks", "AppFolio"], meaning: "Total third-party operations spend.", category: "Operations" },
+  { metric: "Maintenance Cost", formula: "Maintenance spend ÷ total square footage", sources: ["QuickBooks"], meaning: "Maintenance cost efficiency per square foot.", category: "Operations" },
+  { metric: "Active Projects", formula: "Count of in-progress construction projects", sources: ["Procore", "Buildertrend"], meaning: "Construction projects currently underway.", category: "Construction" },
+  { metric: "Budget Utilization", formula: "Spent to date ÷ approved budget × 100", sources: ["Procore"], meaning: "Share of approved construction budget consumed.", category: "Construction" },
+  { metric: "Delayed Projects", formula: "Projects behind baseline schedule", sources: ["Procore"], meaning: "Projects trailing their planned timeline.", category: "Construction" },
+  { metric: "Completion Forecast", formula: "AI-forecast on-time completion rate", sources: ["AI Model", "Procore"], meaning: "Projected share of projects delivering on schedule.", category: "Construction" },
+  { metric: "Tenant Satisfaction", formula: "Mean tenant survey rating (1–5)", sources: ["Survey", "Gorgias"], meaning: "Average satisfaction across tenant surveys.", category: "Customer" },
+  { metric: "NPS Score", formula: "% Promoters − % Detractors", sources: ["Survey"], meaning: "Net Promoter Score measuring tenant loyalty.", category: "Customer" },
+  { metric: "Open Complaints", formula: "Count of unresolved tenant complaints", sources: ["AppFolio", "Gorgias"], meaning: "Outstanding tenant issues requiring resolution.", category: "Customer" },
+  { metric: "Renewal Intent", formula: "% tenants indicating intent to renew (survey)", sources: ["Survey", "AI Model"], meaning: "Forward-looking signal of likely renewals.", category: "Customer" },
+  { metric: "Cash Position", formula: "Available cash and equivalents", sources: ["QuickBooks", "NetSuite"], meaning: "Liquidity available for operations and acquisitions.", category: "Portfolio" },
+  { metric: "Construction Exposure", formula: "Σ remaining committed construction capital", sources: ["Procore", "NetSuite"], meaning: "Total capital committed to active construction.", category: "Portfolio" },
+  { metric: "AI Queries", formula: "Count of AI assistant queries in period", sources: ["REOS AI"], meaning: "Volume of natural-language questions asked of the platform AI.", category: "Platform" },
+  { metric: "Actions Executed", formula: "Count of one-click AI actions taken", sources: ["REOS AI"], meaning: "Recommended actions executed by users.", category: "Platform" },
+  { metric: "Insights Generated", formula: "Count of AI insights surfaced", sources: ["REOS AI"], meaning: "Automated insights produced across modules.", category: "Platform" },
+  { metric: "Value Identified", formula: "Σ projected upside of AI recommendations", sources: ["REOS AI"], meaning: "Estimated financial value identified by AI recommendations.", category: "Platform" },
+];
+
+/** Quick lookup map for tooltip popups, keyed by metric name. */
+export const metricMap: Record<string, MetricDef> = dataDictionary.reduce(
+  (acc, m) => {
+    acc[m.metric] = m;
+    return acc;
+  },
+  {} as Record<string, MetricDef>
+);
