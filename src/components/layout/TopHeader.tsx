@@ -17,6 +17,7 @@ import {
   AlertTriangle,
   Info,
   CircleAlert,
+  CalendarCheck,
 } from "lucide-react";
 import { searchEntities } from "@/lib/api";
 import { searchSuggestions } from "@/lib/data/search";
@@ -225,6 +226,18 @@ export function TopHeader() {
           </div>
         )}
       </div>
+
+      {/* Build-your-own CTA */}
+      <a
+        href="https://meetings-na2.hubspot.com/jay-sonavani"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Book a call to build a similar operating system for your business"
+        className="gradient-brand flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+      >
+        <CalendarCheck className="h-4 w-4" strokeWidth={2.2} />
+        <span className="hidden sm:inline">Book a Call</span>
+      </a>
 
       {/* Notifications */}
       <div className="relative">

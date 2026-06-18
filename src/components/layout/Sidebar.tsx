@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Activity } from "lucide-react";
+import { Activity, CalendarCheck, ArrowRight } from "lucide-react";
 import { navSections } from "@/lib/nav";
 import { company } from "@/lib/data/company";
 import { cn } from "@/lib/utils";
@@ -78,6 +78,31 @@ export function Sidebar() {
           </div>
         ))}
       </nav>
+
+      {/* Build-your-own CTA */}
+      <div className="px-3 pb-3">
+        <div className="gradient-brand relative overflow-hidden rounded-xl p-3.5 shadow-sm">
+          <div className="pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full bg-white/10" />
+          <div className="relative">
+            <div className="flex items-center gap-1.5 text-[13px] font-semibold text-white">
+              <CalendarCheck className="h-4 w-4" strokeWidth={2.2} />
+              Want an OS like this?
+            </div>
+            <p className="mt-1 text-[11px] leading-snug text-white/80">
+              We build custom operating systems for your business.
+            </p>
+            <a
+              href="https://meetings-na2.hubspot.com/jay-sonavani"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2.5 flex items-center justify-center gap-1.5 rounded-lg bg-white px-3 py-2 text-[12px] font-semibold text-brand-700 shadow-sm transition hover:bg-white/90"
+            >
+              Book a Call
+              <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </a>
+          </div>
+        </div>
+      </div>
 
       {/* Footer status */}
       <div className="border-t border-slate-200/70 px-5 py-4">
